@@ -134,6 +134,21 @@ export const Calculator = () => {
       // console.log(displayValue);
       return;
     }
+    if (val === ".") {
+      if (lastOperator) {
+        const operatorIndex = displayValue.lastIndexOf(lastOperator);
+
+        const lastNumberSet = displayValue.slice(operatorIndex + 1);
+
+        if (lastNumberSet.includes(".")) {
+          return;
+        }
+      }
+
+      if (!lastOperator && displayValue.includes(".")) {
+        return;
+      }
+    }
 
     setDisplayValue(displayValue + val);
   };
